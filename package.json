@@ -7,9 +7,11 @@
     "url": "git+ssh://git@github.com/sciensa/node-red-contrib-br-validations.git"
   },
   "scripts": {
-    "test:unit": "mocha --opts test/unit/mocha.opts test/"
+    "test:unit": "mocha --opts test/unit/mocha.opts test/",
+    "postinstall": "npm --prefix ./node_modules/node-red install ./node_modules/node-red"
   },
   "keywords": [
+    "node-red",
     "CPF",
     "CNPJ",
     "PIS",
@@ -36,6 +38,7 @@
     "eslint-config-airbnb-base": "^11.2.0",
     "eslint-plugin-import": "^2.2.0",
     "mocha": "^3.4.1",
+    "node-red": "git+ssh://git@github.com/node-red/node-red#0.16.2",
     "sinon": "^2.2.0",
     "sinon-chai": "^2.10.0"
   },
