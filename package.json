@@ -1,0 +1,30 @@
+{
+  "name": "node-red-contrib-br-validations",
+  "version": "0.1.0",
+  "description": "Validates some Brazilian documents such as CPF, CNPJ and PIS.",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/sciensa/node-red-contrib-br-validations.git"
+  },
+  "keywords": [
+    "CPF",
+    "CNPJ",
+    "PIS",
+    "PASEP",
+    "PIS/PASEP",
+    "brazilian",
+    "documents",
+    "validations"
+  ],
+  "author": "Sciensa Consulting <sciensa@sciensa.com.br> (http://github.com/sciensa)",
+  "contributors": [
+    "Aline Castro <aline.castro@sciensa.com.br> (http://github.com/alinecastro33)",
+    "Rogério R. Alcântara <rogerio.alcantara@sciensa.com.br> (http://github.com/roalcantara)",
+    "Valter Junior <valter.junior@sciensa.com.br> (http://github.com/valterjnr)"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sciensa/node-red-contrib-br-validations/issues"
+  },
+  "homepage": "https://github.com/sciensa/node-red-contrib-br-validations#readme"
+}
