@@ -7,3 +7,5 @@ plugins:
 rules:
   semi: 2
   import/no-extraneous-dependencies: [error, { devDependencies: true }]
+globals:
+  expect: true
