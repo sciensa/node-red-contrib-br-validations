@@ -26,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/sciensa/node-red-contrib-br-validations/issues"
   },
-  "homepage": "https://github.com/sciensa/node-red-contrib-br-validations#readme"
+  "homepage": "https://github.com/sciensa/node-red-contrib-br-validations#readme",
+  "dependencies": {
+    "babel-core": "^6.24.1"
+  }
 }
