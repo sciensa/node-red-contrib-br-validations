@@ -1,0 +1,123 @@
+<script type="text/x-red" data-template-name="BrValidations">
+  <div class="form-row">
+    <label for="node-input-name">
+      <i class="fa fa-tag"></i> Name
+    </label>
+    <input type="text" id="node-input-name">
+  </div>
+  <h5>Document Types: <small>(at least one selection is required)</small> </h5>
+  <div class='form-row pg'>
+      <label>&nbsp;</label>
+      <input type='checkbox' id='node-input-cpf' style='display: inline-block; width: auto; vertical-align: top;'>
+      <label for='node-input-cpf' style='width: 70%;'>CPF</label>
+  </div>
+  <div class='form-row pg'>
+      <label>&nbsp;</label>
+      <input type='checkbox' id='node-input-cnpj' required style='display: inline-block; width: auto; vertical-align: top;'>
+      <label for='node-input-cnpj' style='width: 70%;'>CNPJ</label>
+  </div>
+  <div class='form-row pg'>
+      <label>&nbsp;</label>
+      <input type='checkbox' id='node-input-pis' required style='display: inline-block; width: auto; vertical-align: top;'>
+      <label for='node-input-pis' style='width: 70%;'>PIS/PASEP</label>
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="BrValidations">
+  <p>Validates some Brazilian documents such as CPF, CNPJ and PIS.</p>
+  <p>It receives a <code>msg.document</code> with the document number to be validated. </p>
+  <p>It will try to validade the <code>msg.document</code> for each checked document type.</p>
+  <p>If the <code>msg.document</code> is valid for any checked document type, the <code>msg.payload</code> will be sent to the <b>Success output</b>. </p>
+  <p>Otherwise, the <code>msg.payload</code> will be sent to the <b>Failure output</b>. </p>
+
+  <h3>Properties</h3>
+  <ol>
+    <li>
+      <dl class="message-properties">
+        <dt>Name</dt>
+        <dd>Custom name <small>(optional)</small></dd>
+      </dl>
+    </li>
+    <li>
+      <dl class="message-properties">
+        <dt>CPF <small>(document type)</small></dt>
+        <dd>Validates CPFs</dd>
+      </dl>
+    </li>
+    <li>
+      <dl class="message-properties">
+        <dt>CNPJ <small>(document type)</small></dt>
+        <dd>Validates CNPJs</dd>
+      </dl>
+    </li>
+    <li>
+      <dl class="message-properties">
+        <dt>PIS/PASEP <small>(document type)</small></dt>
+        <dd>Validades PIS/PASEP</dd>
+      </dl>
+    </li>
+  </ol>
+
+  <h3>Inputs</h3>
+  <ol>
+    <li>
+      Document
+      <dl class="message-properties">
+        <dt>msg.document</dt>
+        <dd>The document to be validated</dd>
+      </dl>
+    </li>
+  </ol>
+
+  <h3>Outputs</h3>
+  <ol class="node-ports">
+     <li>
+       Success output
+       <dl class="message-properties">
+         <dt>Payload</dt>
+         <dd>The received msg.payload</dd>
+       </dl>
+     </li>
+     <li>
+       Failure output
+       <dl class="message-properties">
+         <dt>Payload</dt>
+         <dd>The received msg.payload</dd>
+       </dl>
+     </li>
+  </ol>
+
+  <h3>Details</h3>
+  <p>This node is heavily based on the excellent <a href="https://www.npmjs.com/package/br-validations" target="_blank">br-validations</a> library.</p>
+</script>
+
+<script type="text/javascript">
+  (function() {
+		RED.nodes.registerType('BrValidations', {
+			category: 'validations',
+      icon: 'alert.png',
+			color:'#D8BFD8',
+      inputs: 1,
+			outputs: 2,
+      defaults: {
+        name: { value: '' },
+        cpf: { value: false, validate: function(v) {
+          return (v || this.cnpj || this.pis) }
+        },
+        cnpj: { value: false, validate: function(v) {
+          return (v || this.cpf || this.pis) }
+        },
+        pis: { value: false, validate: function(v) {
+          return (v || this.cnpj || this.cpf) }
+        }
+			},
+      outputLabels: ["success", "failure"],
+			label: function() {
+				return this.name || ('BR Validations');
+			},
+			labelStyle: function() {
+				return this.name ? 'node_label_italic': '';
+			}
+		});
+  })();
+</script>

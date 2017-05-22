@@ -22,6 +22,11 @@
     "validations",
     "br-validations"
   ],
+  "node-red": {
+    "nodes": {
+      "br-validations": "br/validations.js"
+    }
+  },
   "author": "Sciensa Consulting <sciensa@sciensa.com.br> (http://github.com/sciensa)",
   "contributors": [
     "Aline Castro <aline.castro@sciensa.com.br> (http://github.com/alinecastro33)",
