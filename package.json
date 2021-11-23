@@ -7,8 +7,7 @@
     "url": "git+ssh://git@github.com/sciensa/node-red-contrib-br-validations.git"
   },
   "scripts": {
-    "test:unit": "mocha --opts test/unit/mocha.opts test/",
-    "postinstall": "npm --prefix ./node_modules/node-red install ./node_modules/node-red"
+    "test:unit": "mocha --opts test/unit/mocha.opts test/"
   },
   "keywords": [
     "node-red",
