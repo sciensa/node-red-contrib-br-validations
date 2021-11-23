@@ -1,5 +1,4 @@
 const BrValidations = require('br-validations');
-const S = require('string');
 
 module.exports = (RED) => {
   function BrValidationsNode(config) {
@@ -28,7 +27,7 @@ module.exports = (RED) => {
     const isAnySelected = () => node.cpf || node.cnpj || node.pis;
 
     node.on('input', (message) => {
-      if (S(message.document).isEmpty()) {
+      if (/^[\s\xa0]*$/.test(message.document || '')) {
         node.error('BrValidations Error: message.document must be sent!', message);
       } else if (!isAnySelected()) {
         node.error('BrValidations Config Error: at least one Document Type must be checked!', message);
